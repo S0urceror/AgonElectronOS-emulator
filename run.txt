@@ -1,0 +1,53 @@
+Unknown Command 0x1 received!
+Unknown Command 0x1A received!
+... INIT (disk interface, memory, get slot configuration)
+05F365 - IN A,(A8) => 50
+05F365 - IN A,(A8) => 50
+05F365 - IN A,(A8) => 50
+055897 ... H.RUNC, called in disk interface slot
+05FEC9 - CALLF (00,5897)
+05F365 - IN A,(A8) => 50
+055984 - RDSLT (00,7D2F) => AA
+05598C - RDSLT (00,7D30) => AA
+05F365 - IN A,(A8) => 50
+05F365 - IN A,(A8) => 50
+... scan memory for RAM in page 0
+055E61 - RDSLT (00,0010) => AA
+055E69 - WRSLT (00,0010,55)
+... scan memory for RAM in page 1
+055E61 - RDSLT (01,7C01) => 00
+055E69 - WRSLT (01,7C01,FF)
+055E70 - RDSLT (01,7C01) => FF
+055E7B - WRSLT (01,7C01,00)
+0559F7 ... read bootsector - disk in drive and formatted correctly?
+05FFA5 - CALLF (00,6055)    -   H.PHYD
+05607D - CALSLT (00,4010)   -   DSKIO
+Unknown Command 0x7 received!   -   BELL
+CLS.
+055A1B ... read bootsector and store it for further use
+05FFA5 - CALLF (00,6055)    -   H.PHYD
+05607D - CALSLT (00,4010)   -   DSKIO
+055A2D ... switch page 0 to RAM
+055A38 ... setup routines in 0000 - 0100 and dynamic slot switching routines
+055AE4 ... start bootloader from C000+001Eh
+05F32F - CALLF (00,56D3)    -   BDOS HANDLER
+BDOS entry: 0F              -   FILE OPEN
+BDOS file open
+MSXDOS  .SYS
+05607D - CALSLT (00,4013)   -   DSKCHG
+05607D - CALSLT (00,4010)   -   DSKIO
+05607D - CALSLT (00,4016)   -   GETDPB
+05607D - CALSLT (00,4010)   -   DSKIO
+BDOS entry out
+05F32F - CALLF (00,56D3)    -   BDOS HANDLER
+BDOS entry: 1A              -   SET DISK TRANSFER ADDRESS
+BDOS entry out
+05F32F - CALLF (00,56D3)    -   BDOS HANDLER
+BDOS entry: 27              -   RANDOM BLOCK READ
+05607D - CALSLT (00,4010)   -   DSKIO
+05607D - CALSLT (00,4010)   -   DSKIO
+BDOS block read
+BDOS entry out
+... JP 0100 - start MSDOS.SYS
+0540B1 - CALSLT (00,00A2)                                                                                                     
+0540B1 - CALSLT (00,00A2)

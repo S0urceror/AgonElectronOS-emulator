@@ -1,0 +1,6 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "./cargo/git/checkouts/agon-cpu-emulator-a5349d46829a62d4/6fa4292/Cargo.toml",
+        "./cargo/git/checkouts/agon-cpu-emulator-a5349d46829a62d4/6fa4292/Cargo.toml"
+    ]
+}

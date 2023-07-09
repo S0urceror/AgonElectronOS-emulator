@@ -1,0 +1,34 @@
+ez80asm regression_suite/hostfs.asm
+load regression_suite/hostfs.bin
+run
+cd regression_suite
+ez80asm helloworld.asm
+ez80asm helloworld16.asm
+cd /
+load regression_suite/helloworld.bin
+run
+load regression_suite/helloworld16.bin
+run
+disassemble &7c10 100
+cd regression_suite
+load ../bbcbasic.bin
+run
+LOAD "animal.bbc"
+LIST
+SAVE "animal2.bas"
+SAVE "animal2.bbc"
+*BYE 
+cd ..
+RUN
+LIST
+LOAD "regression_suite/animal2.bbc"
+LIST
+NEW
+LIST
+LOAD "regression_suite/animal2.bas"
+LIST
+NEW
+LOAD "regression_suite/sin_cos.bbc"
+LIST
+RUN
+*BYE
